@@ -336,8 +336,8 @@
 		</if>
 	</logger>
 
-	<logger name="ls.demon.webapp.common.service.integration"
-		level="${logging_level_default}" additivity="false">
+	<logger name="ls.demon.webapp.common.service.integration" level="${logging_level_default}"
+		additivity="false">
 		<appender-ref ref="EHEALTH-INTEGRATION-APPENDER" />
 		<appender-ref ref="COMMON-ERROR" />
 		<if condition='property("run.mode").contains("0")'>
@@ -351,7 +351,6 @@
 	<!-- ================================================== -->
 
 
-	<logger name="ls.demon" level="${logging_level_default}" />
 	<logger name="com.qq" level="${logging_level_test}" />
 	<logger name="org.apache.cxf" level="${logging_level_test}" />
 	<logger name="ls.demon.webapp.util.ServerUtils" level="warn" />
@@ -361,7 +360,7 @@
 		level="${logging_level_test}" />
 
 	<!-- 睿博默认日志输出 -->
-	<logger name="com.witon" level="${logging_level_default}"
+	<logger name="ls.demon" level="${logging_level_default}"
 		additivity="false">
 		<appender-ref ref="DEFAULT" />
 		<appender-ref ref="COMMON-ERROR" />

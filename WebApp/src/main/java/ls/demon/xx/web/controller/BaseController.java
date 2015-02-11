@@ -14,15 +14,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * 
  * @author lisong
- * @version $Id: BaseController.java, v 0.1 2015Äê2ÔÂ11ÈÕ ÏÂÎç8:16:21 lisong Exp $
+ * @version $Id: BaseController.java, v 0.1 2015ï¿½ï¿½2ï¿½ï¿½11ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½8:16:21 lisong Exp $
  */
 @Controller
 public class BaseController {
 
-    private static int                    counter    = 0;
-    private static final String           VIEW_INDEX = "index";
     private final static org.slf4j.Logger logger     = LoggerFactory
                                                          .getLogger(BaseController.class);
+
+    private static int                    counter    = 0;
+    private static final String           VIEW_INDEX = "index";
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String welcome(ModelMap model) {
