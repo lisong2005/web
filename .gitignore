@@ -4,6 +4,21 @@ WebApp/.settings
 WebApp/target
 WebApp/bin
 
+oauth2/sparklr/.classpath
+oauth2/sparklr/.project
+oauth2/sparklr/.settings
+oauth2/sparklr/target
+oauth2/sparklr/bin
+
+oauth2/tonr/.classpath
+oauth2/tonr/.project
+oauth2/tonr/.settings
+oauth2/tonr/target
+oauth2/tonr/bin
+
+
+
+
 CounterWebApp
 Maven-WebProject-CounterWebApp.zip
 
