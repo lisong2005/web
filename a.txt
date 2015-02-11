@@ -1,0 +1,4 @@
+﻿
+
+mvn archetype:generate -DgroupId=ls.demon -DartifactId=WebApp -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+
