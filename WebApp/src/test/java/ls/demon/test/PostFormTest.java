@@ -117,16 +117,39 @@ public class PostFormTest {
     }
 
     @Test
-    public void test_httpClient_post() {
-        String cs = "gbk";
-        String cs2 = "utf-8";
+    public void test_httpClient_post_b() {
+        // 浏览器兼容模式，属性name值都可以被正确解析
+        // 但是，不同编码格式下的value无法解析
+
+        String gbk = "gbk";
+        String utf8 = "utf-8";
+        at_test(gbk, utf8, HttpMultipartMode.BROWSER_COMPATIBLE);
+    }
+
+    @Test
+    public void test_httpClient_post_s() {
+        // strict模式，属性value值都可以被正确解析，因为每一个数据项都是独立编码
+        // 但是，属性名存在无法正确解析的问题，是由于name被使用ascii码进行传输
+
+        String gbk = "gbk";
+        String utf8 = "utf-8";
+        at_test(gbk, utf8, HttpMultipartMode.STRICT);
+    }
+
+    /**
+     * 
+     * @param cs
+     * @param cs2
+     */
+    private void at_test(String cs, String cs2, HttpMultipartMode mode) {
 
         try {
+            Charset defaultCS = Charset.forName(cs);
             String url = "http://localhost:8080/WebApp/tool/at.htm";
 
             HttpClient httpclient = new DefaultHttpClient();
             httpclient.getParams().setParameter("http.protocol.version", HttpVersion.HTTP_1_1);
-            httpclient.getParams().setParameter("http.protocol.content-charset", cs);
+            httpclient.getParams().setParameter("http.protocol.content-charset", defaultCS.name());
 
             HttpPost httpPost = new HttpPost(url);
             logger.info("post url:" + url);
@@ -135,7 +158,8 @@ public class PostFormTest {
             httpPost.setHeader("Accept-Charset", "GBK,utf-8;q=0.7,*;q=0.7");
             httpPost.setHeader("Connection", "keep-alive");
 
-            MultipartEntity mutiEntity = new MultipartEntity();
+            MultipartEntity mutiEntity = new MultipartEntity(mode, null, defaultCS);
+            mutiEntity.addPart("test中文", new StringBody("美丽的西双版纳", defaultCS));
             mutiEntity.addPart("appId", new StringBody("美丽的西双版纳", Charset.forName(cs)));
             mutiEntity.addPart("appSecret", new StringBody("美丽的西双版纳2", Charset.forName(cs2)));
 
@@ -144,7 +168,7 @@ public class PostFormTest {
             HttpEntity httpEntity = httpResponse.getEntity();
             String content = EntityUtils.toString(httpEntity);
 
-            logger.info("", content);
+            logger.info("{}", content);
         } catch (ParseException e) {
             logger.error("", e);
         } catch (IOException e) {
