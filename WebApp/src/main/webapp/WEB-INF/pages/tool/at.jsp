@@ -10,7 +10,7 @@
 	<%-- 	<h3>Message : ${message}</h3> --%>
 	<%-- 	<h3>Counter : ${counter}</h3> --%>
 
-	<form action="at.htm" method="post">
+	<form action="at.htm" method="post" enctype="multipart/form-data">
 		<table>
 			<tbody>
 				<tr>

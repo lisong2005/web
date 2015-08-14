@@ -4,6 +4,15 @@
  */
 package ls.demon.xx.web.controller;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.StringWriter;
+
+import javax.servlet.http.HttpServletRequest;
+
+import ls.demon.xx.web.controller.form.XXForm;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -28,7 +37,7 @@ public class AccessTotenToolController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String doGet(ModelMap modelMap, String appId, String appSecret) {
-        logger.info("");
+        logger.info("appId={},appSecret={}", appId, appSecret);
 
         if (StringUtils.isNotBlank(appId) && StringUtils.isNotBlank(appSecret)) {
 
@@ -47,18 +56,35 @@ public class AccessTotenToolController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String doPost(ModelMap modelMap, String appId, String appSecret) {
-        logger.info("post");
+    public String doPost(ModelMap modelMap, XXForm form, HttpServletRequest request)
+                                                                                    throws IOException {
+        logger.info("[doPost]form={}", form);
 
-        if (StringUtils.isNotBlank(appId) && StringUtils.isNotBlank(appSecret)) {
+        logger.info("{}", request.getCharacterEncoding());
+        logger.info("{}", request.getContentType());
+        logger.info("{}", request.getHeaderNames());
+
+        StringWriter sw = new StringWriter();
+        BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream(),
+            request.getCharacterEncoding()));
+        for (;;) {
+            String line = br.readLine();
+            if (line == null) {
+                break;
+            }
+            sw.write(line);
+        }
+        logger.info("content={}", sw.toString());
+
+        if (StringUtils.isNotBlank(form.getAppId()) && StringUtils.isNotBlank(form.getAppSecret())) {
 
             String timestamp = String.valueOf(System.currentTimeMillis());
 
-            String checkToken = DigestUtils.md5Hex(String.format("%s%s%s", appId, appSecret,
-                timestamp));
+            String checkToken = DigestUtils.md5Hex(String.format("%s%s%s", form.getAppId(),
+                form.getAppSecret(), timestamp));
 
-            modelMap.addAttribute("appId", appId);
-            modelMap.addAttribute("appSecret", appSecret);
+            modelMap.addAttribute("appId", form.getAppId());
+            modelMap.addAttribute("appSecret", form.getAppSecret());
             modelMap.addAttribute("timestamp", timestamp);
             modelMap.addAttribute("checkToken", checkToken);
         }
