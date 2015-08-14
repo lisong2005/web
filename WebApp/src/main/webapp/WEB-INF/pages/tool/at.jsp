@@ -14,6 +14,11 @@
 		<table>
 			<tbody>
 				<tr>
+					<td><label>test中文:</label></td>
+					<td><input type="text" name="test中文" value="${test中文}"
+						maxlength="64" /></td>
+				</tr>
+				<tr>
 					<td><label>appId:</label></td>
 					<td><input type="text" name="appId" value="${appId}"
 						maxlength="64" /></td>
