@@ -41,7 +41,7 @@ public class SignUtil {
         }
         sb.append(salt);
         String str = sb.toString();
-        logger.debug("{}", str);
+        logger.info("{}", str);
         return DigestUtils.md5Hex(str);
     }
 
