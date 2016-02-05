@@ -6,6 +6,7 @@ package ls.demon.test;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.Hex;
@@ -27,6 +28,8 @@ public class TestA {
     @Test
     public void test_show() {
         try {
+            logger.error("{}", URLEncoder.encode("?", "utf-8"));
+            logger.error("{}", URLDecoder.decode("%3F", "utf-8"));
             logger.error("xxxx");
             String s1 = "eJwBIADf%2F8gO31arHpnEbSuctM0JbhhXlsT3fxIhqjaAsRf2INp1%2FycPXQ%3D%3D";
             logger.error("{}", URLDecoder.decode(s1, "utf-8"));

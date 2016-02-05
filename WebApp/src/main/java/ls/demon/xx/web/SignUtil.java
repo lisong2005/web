@@ -45,6 +45,18 @@ public class SignUtil {
         return DigestUtils.md5Hex(str);
     }
 
+    public static String toSignStr(Map<String, String> params, String salt) {
+        TreeSet<String> keys = new TreeSet<>(params.keySet());
+        StringBuilder sb = new StringBuilder();
+        for (String key : keys) {
+            sb.append(key).append("=").append(params.get(key)).append(",");
+        }
+        sb.append(salt);
+        String str = sb.toString();
+        logger.info("{}", str);
+        return str;
+    }
+
     /**
      * 
      * @param params

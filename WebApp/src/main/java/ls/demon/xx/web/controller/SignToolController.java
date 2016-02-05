@@ -39,6 +39,9 @@ public class SignToolController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String doGet(ModelMap modelMap, String jsonStr, String appSecret) {
+
+        appSecret = StringUtils.trimToEmpty(appSecret);
+
         logger.info("appId={},appSecret={}", jsonStr, appSecret);
 
         modelMap.addAttribute("appSecret", appSecret);
@@ -49,6 +52,10 @@ public class SignToolController {
         if (StringUtils.isBlank(jsonStr)) {
             JSONObject jo = new JSONObject();
             try {
+                jo.put("sign", "aaa");
+                jo.put("Sign", "aaa");
+                jo.put("SIGN", "aaa");
+
                 jo.put("key1", "Value1");
                 jo.put("key2", "Value2");
 
@@ -65,7 +72,7 @@ public class SignToolController {
             } catch (JSONException e) {
             }
         }
-        
+
         if (StringUtils.isBlank(appSecret)) {
             modelMap.addAttribute("appSecret", "change me");
         }
@@ -81,6 +88,7 @@ public class SignToolController {
      */
     @SuppressWarnings("unchecked")
     protected void sign(ModelMap modelMap, String jsonStr, String appSecret) {
+
         if (StringUtils.isNotBlank(appSecret) && StringUtils.isNotBlank(jsonStr)) {
             try {
                 JSONObject jo = new JSONObject(jsonStr);
@@ -113,6 +121,9 @@ public class SignToolController {
 
                 }
                 logger.info("params = {}", params);
+                String signSrcStr = SignUtil.toSignStr(params, appSecret);
+                modelMap.addAttribute("signSrcStr", signSrcStr);
+
                 String sign = SignUtil.sign(params, appSecret);
                 modelMap.addAttribute("sign", sign);
             } catch (Exception e) {
@@ -124,6 +135,8 @@ public class SignToolController {
 
     @RequestMapping(method = RequestMethod.POST)
     public String doPost(ModelMap modelMap, String jsonStr, String appSecret) {
+        appSecret = StringUtils.trimToEmpty(appSecret);
+
         logger.info("appId={},appSecret={}", jsonStr, appSecret);
 
         modelMap.addAttribute("appSecret", appSecret);
