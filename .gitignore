@@ -4,6 +4,13 @@ WebApp/.settings
 WebApp/target
 WebApp/bin
 
+druid-test/.classpath
+druid-test/.project
+druid-test/.settings
+druid-test/target
+druid-test/bin
+
+
 oauth2/sparklr/.classpath
 oauth2/sparklr/.project
 oauth2/sparklr/.settings
