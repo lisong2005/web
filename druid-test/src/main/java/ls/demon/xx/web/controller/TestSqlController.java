@@ -21,6 +21,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
+ * http://localhost:8090/dt/druid/index.html
+ * http://localhost:8090/dt/test/dt.htm
+ * 
  * 
  * @author song.li@witontek.com
  * @version $Id: TestSqlController.java, v 0.1 2016年2月16日 下午2:53:20 song.li@witontek.com Exp $
