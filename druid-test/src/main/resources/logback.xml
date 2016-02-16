@@ -353,6 +353,7 @@
 
 	<logger name="ls.demon.dal" level="${logger.sql.level}" />
 
+	<logger name="druid.sql" level="${logging_level_test}" />
 	<logger name="com.alibaba.druid" level="${logging_level_test}" />
 
 	<!-- <logger name="org.springframework" level="${logging_level_test}" /> -->
