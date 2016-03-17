@@ -23,6 +23,8 @@
 
 		<httpclient.version>4.2.1</httpclient.version>
 
+		<mybatis.generator.configurationFile>${basedir}/src/main/resources/META-INF/generatorConfig.xml</mybatis.generator.configurationFile>
+
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
@@ -169,6 +171,19 @@
 			<version>0.10.0</version>
 		</dependency>
 
+
+		<!-- postgresql jdbc -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.3-1101-jdbc41</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.2.7</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -218,6 +233,20 @@
 				<configuration>
 					<path>/CounterWebApp</path>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.mybatis.generator</groupId>
+				<artifactId>mybatis-generator-maven-plugin</artifactId>
+				<version>1.3.0</version>
+				<!-- <executions> -->
+				<!-- <execution> -->
+				<!-- <id>Generate MyBatis Artifacts</id> -->
+				<!-- <goals> -->
+				<!-- <goal>generate</goal> -->
+				<!-- </goals> -->
+				<!-- </execution> -->
+				<!-- </executions> -->
 			</plugin>
 
 		</plugins>

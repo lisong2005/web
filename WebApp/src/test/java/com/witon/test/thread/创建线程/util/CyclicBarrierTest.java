@@ -2,7 +2,7 @@
  * Witontek.com.
  * Copyright (c) 2012-2015 All Rights Reserved.
  */
-package ls.demon.thread;
+package com.witon.test.thread.创建线程.util;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,11 +13,6 @@ import java.util.concurrent.Executors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * 
- * @author song.li@witontek.com
- * @version $Id: CyclicBarrierTest.java, v 0.1 2015年10月23日 下午1:48:41 song.li@witontek.com Exp $
- */
 public class CyclicBarrierTest {
     /**
     * Logger for this class
@@ -31,22 +26,29 @@ public class CyclicBarrierTest {
         final List<Integer> list = Arrays
             .asList(new Integer[] { new Integer(0), new Integer(10000) });
 
-        final CyclicBarrier cb = new CyclicBarrier(parties, new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    logger.info("all over {}", list);
-                    Thread.sleep(1000);
-                } catch (Exception e) {
-                    logger.error("", e);
-                }
-            }
-        });
+        final CyclicBarrier cb = new CyclicBarrier(parties, null);
+//        final CyclicBarrier cb = new CyclicBarrier(parties, new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    logger.info("all over {}", list);
+//                    Thread.sleep(500);
+//                } catch (Exception e) {
+//                    logger.error("", e);
+//                }
+//            }
+//        });
 
         for (int i = 0; i < parties; i++) {
             exe.execute(new TestTask(cb, i, list));
         }
         logger.info("main over");
+        try {
+            Thread.sleep(2000);
+            exe.shutdown();
+        } catch (Exception e) {
+            logger.error("", e);
+        }
     }
 
     static class TestTask implements Runnable {
@@ -65,7 +67,7 @@ public class CyclicBarrierTest {
 
         @Override
         public void run() {
-            for (int i = 0; i < 2; i++) {
+            for (int i = 0; i < 3; i++) {
                 try {
                     // cb.await();
 

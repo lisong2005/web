@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<!-- xx -->
+	<!-- <properties /> -->
+
+	<!-- 依赖类路径 或者 jar包地址 -->
+	<classPathEntry
+		location="D:\java\m2\repo\org\postgresql\postgresql\9.3-1101-jdbc41\postgresql-9.3-1101-jdbc41.jar" />
+
+	<!-- defaultModelType: conditional flat hierarchical -->
+	<!-- targetRuntime: MyBatis3 MyBatis3Simple Ibatis2Java2 Ibatis2Java5 -->
+	<context id="postgresTables" defaultModelType="flat"
+		targetRuntime="MyBatis3">
+
+		<property name="javaFileEncoding" value="utf-8" />
+
+		<jdbcConnection driverClass="org.postgresql.Driver"
+			connectionURL="jdbc:postgresql://192.168.1.180:5432/witon" userId="postgres"
+			password="postgres">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- domain对象生成 -->
+		<javaModelGenerator targetPackage="com.mbg.test.model"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+			<!-- <property name="rootClass" value="com.model.BaseModel" /> -->
+		</javaModelGenerator>
+
+		<!-- 配置文件生成 -->
+		<sqlMapGenerator targetPackage="com.mbg.test.xml"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- 接口生成 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.mbg.test.dao" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<!-- 表定义 -->
+		<table schema="" tableName="eh_config_param" domainObjectName="ConfigParam">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="ID" sqlStatement="SYBASE"
+				identity="false" type="pre" />
+
+			<columnRenamingRule searchString="^CUST_"
+				replaceString="" />
+
+			<!-- <columnOverride column="DATE_FIELD" property="startDate" /> -->
+			<!-- <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> -->
+			<!-- <ignoreColumn column="FRED" /> -->
+		</table>
+		<table schema="" tableName="eh_point" domainObjectName="EhPoint">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="ID" sqlStatement="SYBASE"
+				identity="false" type="pre" />
+		</table>
+		<table schema="" tableName="eh_user_info" domainObjectName="UserInfo">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="ID" sqlStatement="SYBASE"
+				identity="false" type="pre" />
+		</table>
+		<table schema="" tableName="eh_logon_info" domainObjectName="LogonInfo">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="ID" sqlStatement="SYBASE"
+				identity="false" type="pre" />
+		</table>
+
+	</context>
+</generatorConfiguration>

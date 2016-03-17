@@ -35,10 +35,12 @@
 
 	<property name="file_biz_service" value="${log_file_path}/ehealth-biz-service.log" />
 	<property name="file_common_dal" value="${log_file_path}/ehealth-common-dal.log" />
-	<property name="file_common_integration" value="${log_file_path}/ehealth-common-integration.log" />
+	<property name="file_common_integration"
+		value="${log_file_path}/ehealth-common-integration.log" />
 
 
-	<property name="file_biz_digest" value="${log_file_path}/ehealth-biz-service-digest.log" />
+	<property name="file_biz_digest"
+		value="${log_file_path}/ehealth-biz-service-digest.log" />
 	<property name="file_dal_digest" value="${log_file_path}/ehealth-dal-digest.log" />
 	<property name="file_sal_digest" value="${log_file_path}/ehealth-sal-digest.log" />
 	<property name="file_page_digest" value="${log_file_path}/ehealth-page-digest.log" />
@@ -58,7 +60,8 @@
 	</appender>
 
 	<!-- DEFAULT -->
-	<appender name="DEFAULT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="DEFAULT"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- <Encoding>UTF-8</Encoding> -->
 		<file>${file_default}</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -72,7 +75,8 @@
 	</appender>
 
 	<!-- common-error -->
-	<appender name="COMMON-ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="COMMON-ERROR"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
 			<level>ERROR</level>
 		</filter>
@@ -90,7 +94,8 @@
 	<!-- ================================================== -->
 	<!-- ================================================== -->
 
-	<appender name="EHEALTH-WEB-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="EHEALTH-WEB-APPENDER"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- <Encoding>UTF-8</Encoding> -->
 		<file>${file_web_default}</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -104,7 +109,8 @@
 		</encoder>
 	</appender>
 
-	<appender name="EHEALTH-CORE-MODEL-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="EHEALTH-CORE-MODEL-APPENDER"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- <Encoding>UTF-8</Encoding> -->
 		<file>${file_core_model}</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -117,7 +123,8 @@
 		</encoder>
 	</appender>
 
-	<appender name="EHEALTH-CORE-SERVICE-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="EHEALTH-CORE-SERVICE-APPENDER"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- <Encoding>UTF-8</Encoding> -->
 		<file>${file_core_service}</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -131,7 +138,8 @@
 		</encoder>
 	</appender>
 
-	<appender name="EHEALTH-BIZ-SERVICE-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="EHEALTH-BIZ-SERVICE-APPENDER"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- <Encoding>UTF-8</Encoding> -->
 		<file>${file_biz_service}</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -145,7 +153,8 @@
 		</encoder>
 	</appender>
 
-	<appender name="EHEALTH-DAL-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="EHEALTH-DAL-APPENDER"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- <Encoding>UTF-8</Encoding> -->
 		<file>${file_common_dal}</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -158,7 +167,8 @@
 		</encoder>
 	</appender>
 
-	<appender name="EHEALTH-INTEGRATION-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="EHEALTH-INTEGRATION-APPENDER"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- <Encoding>UTF-8</Encoding> -->
 		<file>${file_common_integration}</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -180,7 +190,8 @@
 
 
 	<!-- EHEALTH-BIZ-SERVICE-DIGEST-APPENDER -->
-	<appender name="EHEALTH-BIZ-SERVICE-DIGEST-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="EHEALTH-BIZ-SERVICE-DIGEST-APPENDER"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- <Encoding>UTF-8</Encoding> -->
 		<file>${file_biz_digest}</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -193,7 +204,8 @@
 	</appender>
 
 	<!-- EHEALTH-DAL-DIGEST-APPENDER -->
-	<appender name="EHEALTH-DAL-DIGEST-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="EHEALTH-DAL-DIGEST-APPENDER"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- <Encoding>UTF-8</Encoding> -->
 		<file>${file_dal_digest}</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -206,7 +218,8 @@
 	</appender>
 
 	<!-- EHEALTH-SAL-DIGEST-APPENDER -->
-	<appender name="EHEALTH-SAL-DIGEST-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="EHEALTH-SAL-DIGEST-APPENDER"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- <Encoding>UTF-8</Encoding> -->
 		<file>${file_sal_digest}</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -219,7 +232,8 @@
 	</appender>
 
 	<!-- EHEALTH-PAGE-PERF-APPENDER -->
-	<appender name="EHEALTH-PAGE-PERF-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="EHEALTH-PAGE-PERF-APPENDER"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- <Encoding>UTF-8</Encoding> -->
 		<file>${file_page_digest}</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -337,15 +351,20 @@
 	<!-- ================================================== -->
 
 
+	<logger name="com.witon" level="${logging_level_default}" />
+
+
 	<logger name="com.qq" level="${logging_level_test}" />
 	<logger name="org.apache.cxf" level="${logging_level_test}" />
 	<logger name="ls.demon.webapp.util.ServerUtils" level="warn" />
 	<logger name="ls.demon.webapp.common.dal" level="${logger.sql.level}" />
 	<logger name="org.springframework.ui.velocity" level="${logging_level_test}" />
-	<logger name="org.springframework.web.servlet.view.velocity" level="${logging_level_test}" />
+	<logger name="org.springframework.web.servlet.view.velocity"
+		level="${logging_level_test}" />
 
 	<!-- 睿博默认日志输出 -->
-	<logger name="ls.demon" level="${logging_level_default}" additivity="false">
+	<logger name="ls.demon" level="${logging_level_default}"
+		additivity="false">
 		<appender-ref ref="DEFAULT" />
 		<appender-ref ref="COMMON-ERROR" />
 		<if condition='property("run.mode").contains("0")'>

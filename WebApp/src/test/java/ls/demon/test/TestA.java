@@ -7,6 +7,9 @@ package ls.demon.test;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.Hex;
@@ -67,4 +70,40 @@ public class TestA {
         return a.cast(o);
     }
 
+    @Test
+    public void test_list_and_vector() {
+        try {
+            List<String> list = new ArrayList<String>();
+            list.add("a");
+            list.add("b");
+            list.add("temp");
+            list.add("c");
+            for (String s : list) {
+                if ("b".equals(s)) {
+                    list.remove(s);
+                }
+            }
+
+            logger.info("{}", list);
+        } catch (Exception e) {
+            logger.error("", e);
+        }
+        logger.info("xxxxxxxxxxxxxxxxxxxxxx");
+        try {
+            Vector<String> list = new Vector<String>();
+            list.add("a");
+            list.add("b");
+            list.add("temp");
+            list.add("c");
+            for (String s : list) {
+                if ("b".equals(s)) {
+                    list.remove(s);
+                }
+            }
+
+            logger.info("{}", list);
+        } catch (Exception e) {
+            logger.error("", e);
+        }
+    }
 }

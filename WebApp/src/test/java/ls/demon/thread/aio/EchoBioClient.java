@@ -4,10 +4,10 @@
  */
 package ls.demon.thread.aio;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.net.SocketAddress;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -37,6 +37,13 @@ public class EchoBioClient {
                 }
             });
         }
+
+        try {
+            Thread.sleep(2000);
+            taskService.shutdown();
+        } catch (InterruptedException e) {
+            logger.error("", e);
+        }
     }
 
     /**
@@ -49,6 +56,9 @@ public class EchoBioClient {
 
             String[] ss = new String[] { "hello", "abc", "exit", "ddd" };
 
+            SocketAddress ra = s.getRemoteSocketAddress();
+            logger.info("{}", s.getLocalPort());
+
             for (String str : ss) {
                 os.write(str.getBytes());
                 os.flush();
@@ -58,14 +68,14 @@ public class EchoBioClient {
                 int size = is.read(bf);
                 String arg = new String(bf, 0, size);
 
-                logger.info("read = {}", arg);
+                logger.info("{} read = {}", ra, arg);
                 if (StringUtils.equals("bye", arg)) {
-                    logger.info("exit");
+                    logger.info("{} exit", ra);
                     break;
                 }
             }
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             logger.error("", e);
         }
     }

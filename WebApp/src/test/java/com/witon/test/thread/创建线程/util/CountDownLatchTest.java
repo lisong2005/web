@@ -2,7 +2,7 @@
  * Witontek.com.
  * Copyright (c) 2012-2015 All Rights Reserved.
  */
-package ls.demon.thread;
+package com.witon.test.thread.创建线程.util;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -11,11 +11,6 @@ import java.util.concurrent.Executors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * 
- * @author song.li@witontek.com
- * @version $Id: CountDownLatchTest.java, v 0.1 2015年10月23日 下午2:10:51 song.li@witontek.com Exp $
- */
 public class CountDownLatchTest {
     /**
     * Logger for this class
@@ -53,5 +48,6 @@ public class CountDownLatchTest {
             logger.error("", e);
         }
         logger.info("all over");
+        exe.shutdown();
     }
 }
