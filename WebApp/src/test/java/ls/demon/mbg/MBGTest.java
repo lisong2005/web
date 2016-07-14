@@ -4,12 +4,12 @@
  */
 package ls.demon.mbg;
 
-import ls.demon.xx.BaseModel;
-
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
+
+import ls.demon.xx.BaseModel;
 
 /**
  * 
@@ -44,6 +44,7 @@ public class MBGTest {
             logger.info("{}", Thread.class.getResource("/").getPath());
             logger.info("{}", BaseModel.class.getResource("/").getPath());
             logger.info("{}", new BaseModel().getClass().getResource("/").getPath());
+            logger.info("{}", new BaseModel().getClass().getResource("").getPath());
 
             logger.info("{}", Thread.currentThread().getContextClassLoader().getResource(""));
             logger.info("{}", BaseModel.class.getResource("app.properties"));
@@ -62,10 +63,8 @@ public class MBGTest {
         try {
             logger.info("{}", BaseModel.class.getClassLoader().getResource("app.properties"));
 
-            logger.info(
-                "{}",
-                BaseModel.class.getClassLoader().getResource(
-                    "org/springframework/web/servlet/config/spring-mvc-3.0.xsd"));
+            logger.info("{}", BaseModel.class.getClassLoader()
+                .getResource("org/springframework/web/servlet/config/spring-mvc-3.0.xsd"));
             logger.info("{}",
                 Thread.currentThread().getContextClassLoader().getResource("app.properties"));
 
