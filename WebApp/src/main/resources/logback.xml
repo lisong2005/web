@@ -379,6 +379,9 @@
 	<logger name="org.springframework" level="${logging_level_test}">
 	</logger>
 
+	<logger name="com.spring" level="${logging_level_test}">
+	</logger>
+
 	<!-- spring web 默认日志输出 -->
 	<logger name="org.springframework.web" level="${logging_level_test}">
 	</logger>

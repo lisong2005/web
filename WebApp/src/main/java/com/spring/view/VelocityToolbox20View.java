@@ -1,4 +1,4 @@
-package com.spring.velocity;
+package com.spring.view;
 /**
  * Witontek.com.
  * Copyright (c) 2012-2014 All Rights Reserved.

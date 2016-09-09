@@ -27,6 +27,7 @@
 
 	<bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="com.spring.view.JspView" />
 		<property name="order" value="10" />
 
 		<property name="prefix">
@@ -41,7 +42,7 @@
 	<bean id="velocityViewResolver"
 		class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
 		<property name="order" value="0" />
-		<property name="viewClass" value="com.spring.velocity.VelocityToolbox20View" />
+		<property name="viewClass" value="com.spring.view.VelocityToolbox20View" />
 
 		<!-- 处理后缀为vm的视图 -->
 		<property name="viewNames">
