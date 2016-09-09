@@ -48,6 +48,6 @@ public class 线程不安全2 {
     }
 
     static class Account {
-        public volatile int balance = 0;
+        public volatile long balance = 0;
     }
 }
