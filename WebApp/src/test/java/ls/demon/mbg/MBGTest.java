@@ -46,9 +46,17 @@ public class MBGTest {
             logger.info("{}", new BaseModel().getClass().getResource("/").getPath());
             logger.info("{}", new BaseModel().getClass().getResource("").getPath());
 
-            logger.info("{}", Thread.currentThread().getContextClassLoader().getResource(""));
-            logger.info("{}", BaseModel.class.getResource("app.properties"));
+            logger.info("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 
+            logger.info("{}",
+                Thread.currentThread().getContextClassLoader().getResource("logback.xml"));
+            logger.info("{}",
+                Thread.currentThread().getContextClassLoader().getResource("app.properties"));
+
+            logger.info("{}", BaseModel.class.getResource("app.properties"));
+            logger.info("{}", BaseModel.class.getResource("/app.properties"));
+
+            logger.info("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
             ClassPathResource r = new ClassPathResource("/app.properties");
             logger.info("{}", r);
             logger.info("{}", r.getURL().getPath());
